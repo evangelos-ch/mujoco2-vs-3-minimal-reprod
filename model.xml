@@ -3,20 +3,11 @@
     <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="4 5"/>
 
     <asset>
-        <!-- night sky -->
-        <!-- <texture name="skybox" type="skybox" builtin="gradient" rgb1=".08 .09 .10" rgb2="0 0 0"
-               width="800" height="800" mark="random" markrgb=".8 .8 .8"/> -->
         <texture type="skybox" builtin="gradient" rgb1=".50 .495 .48" rgb2=".50 .495 .48" width="32" height="32"/>
-        <texture name="T_table" type="cube" file="./assets/wood2.png"/>
         <texture name="T_floor" type="2d" file="./assets/floor2.png"/>
 
         <material name="basic_floor" texture="T_floor" texrepeat="12 12" shininess=".3" specular="0.5"
                   reflectance="0.2"/>
-        <material name="table_wood" texture="T_table" shininess=".3" specular="0.5"/>
-        <material name="table_col" rgba="0.3 0.3 1.0 0.5" shininess="0" specular="0"/>
-
-        <mesh file="./assets/tablebody.stl" name="tablebody" scale="1 1 1"/>
-        <mesh file="./assets/tabletop.stl" name="tabletop" scale="1 1 1"/>
 
         <material name="xyz_col" rgba="0.3 0.3 1.0 0.5" shininess="0" specular="0.5"/>
 
@@ -33,21 +24,7 @@
         <mesh file="./assets/pedestal.stl" name="pedestal"/>
     </asset>
 
-    <asset>
-        <texture name="T_wallmetal" type="cube" file="./assets/metal.png"/>
-        <material name="wall_metal" texture="T_wallmetal" shininess="1" reflectance="1" specular=".5"/>
-    </asset>
-
-    <visual>
-        <map fogstart="1.5" fogend="5" force="0.1" znear="0.01"/>
-        <quality shadowsize="4096" offsamples="4"/>
-
-        <headlight ambient="0.4 0.4 0.4"/>
-
-    </visual>
-
     <default>
-
       <default class="xyz_base">
           <joint armature="0.001" damping="2" limited="true"/>
           <geom conaffinity="0" contype="0" group="1" type="mesh"/>
@@ -67,35 +44,11 @@
         <light directional='true' diffuse='.3 .3 .3' specular='0.3 0.3 0.3' pos='1 -1 1' dir='-1 1 -1'/>
         <light castshadow="false" directional='true' diffuse='.3 .3 .3' specular='0.3 0.3 0.3' pos='0 1 1'
                dir='0 -1 -1'/>
-        <body name="tablelink" pos="0 .6 0">
-            <geom material="table_wood" group="1" type="box" size=".7 .4 .027" pos="0 0 -.027" conaffinity="0"
-                  contype="0"/>
-            <geom material="table_wood" group="1" mesh="tablebody" pos="0 0 -0.65" type="mesh" conaffinity="0"
-                  contype="0"/>
-            <geom material="table_col" group="4" pos="0.0 0.0 -0.46" size="0.7 0.4 0.46" type="box" conaffinity="1"
-                  contype="0"/>
-        </body>
-
-        <body name="RetainingWall" pos="0.0 0.6 0.06">
-            <geom material="wall_metal" type="box" size=".7 .01 .06" pos="0. -0.39 0." conaffinity="1" condim="3"
-                  contype="0"/>
-            <geom material="wall_metal" type="box" size=".7 .01 .06" pos="0. 0.39 0." conaffinity="1" condim="3"
-                  contype="0"/>
-            <geom material="wall_metal" type="box" size=".01 .38 .06" pos="-.69 0. 0." conaffinity="1" condim="3"
-                  contype="0"/>
-            <geom material="wall_metal" type="box" size=".01 .38 .06" pos=".69 0. 0." conaffinity="1" condim="3"
-                  contype="0"/>
-        </body>
 
         <geom name="floor" size="4 4 .1" pos="0 0 -.913" conaffinity="1" contype="1" type="plane" material="basic_floor"
               condim="3"/>
 
         <!-- Arm -->
-        <camera pos="0 0.5 1.5" name="topview" />
-        <camera name="corner" mode="fixed" pos="-1.1 -0.4 0.6" xyaxes="-1 1 0 -0.2 -0.2 -1"/>
-        <camera name="corner2" fovy="60" mode="fixed" pos="1.3 -0.2 1.1" euler="3.9 2.3 0.6"/>
-        <camera name="corner3" fovy="45" mode="fixed" pos="0.9 0 1.5" euler="3.5 2.7 1"/>
-
         <body name="base" childclass="xyz_base" pos="0 0 0">
             <site name="basesite" pos="0 0 0" size="0.01" />
             <inertial pos="0 0 0" mass="0" diaginertia="0 0 0" />
@@ -134,10 +87,6 @@
                             <inertial pos="0 0 0" mass="0.0001" diaginertia="1e-08 1e-08 1e-08" />
                             <geom size="0.12 0.07 0.001" type="box" contype="0" conaffinity="0" group="1" rgba="0.2 0.2 0.2 0" />
                         </body>
-                        <body name="head_camera" pos="0.0228027 0 0.216572" quat="0.342813 -0.618449 0.618449 -0.342813">
-                            <inertial pos="0.0228027 0 0.216572" quat="0.342813 -0.618449 0.618449 -0.342813" mass="0" diaginertia="0 0 0" />
-                            <site name="headsite" pos="0 0 0" size="0.01" />
-                        </body>
                     </body>
                     <body name="right_torso_itb" pos="-0.055 0 0.22" quat="0.707107 0 -0.707107 0">
                         <inertial pos="0 0 0" mass="0.0001" diaginertia="1e-08 1e-08 1e-08" />
@@ -170,9 +119,6 @@
                                         <inertial pos="0.0061133 -0.023697 0.076416" quat="0.404076 0.9135 0.0473125 0.00158335" mass="1.5625" diaginertia="0.00474131 0.00422857 0.00190672" />
                                         <joint name="right_j5" pos="0 0 0" axis="0 0 1" limited="true" range="-2.9761 2.9761" damping="10"/>
                                         <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.5 0.1 0.1 1" mesh="l5" />
-                                        <body name="right_hand_camera" pos="0.039552 -0.033 0.0695" quat="0.707107 0 0.707107 0">
-                                            <inertial pos="0.039552 -0.033 0.0695" quat="0.707107 0 0.707107 0" mass="0" diaginertia="0 0 0" />
-                                        </body>
                                         <body name="right_wrist" pos="0 0 0.10541" quat="0.707107 0.707107 0 0">
                                             <inertial pos="0 0 0.10541" quat="0.707107 0.707107 0 0" mass="0" diaginertia="0 0 0" />
                                         </body>
@@ -187,9 +133,6 @@
 
                                                 <geom size="0.035 0.014" pos="0 0 0.015" type="cylinder" rgba="0 0 0 1"/>
                                                 <body name="hand" pos="0 0 0.12" quat="-1 0 1 0">
-                                                    <camera name="behindGripper" mode="track" pos="0 0 -0.5" quat="0 1 0 0" fovy="60" />
-                                                    <camera name="gripperPOV" mode="track" pos="0 -0.1 0" quat="-1 -1.3 0 0" fovy="90" />
-
                                                     <site name="endEffector" pos="0.04 0 0" size="0.01" rgba='1 1 1 0' />
                                                     <geom name="rail" type="box" pos="-0.05 0 0" density="7850" size="0.005 0.055 0.005"  rgba="0.5 0.5 0.5 1.0" condim="3" friction="2 0.1 0.002"   />
 

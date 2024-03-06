@@ -1,4 +1,4 @@
-import mujoco
+import mujoco  # type: ignore
 import numpy as np
 
 np.set_printoptions(suppress=True)
@@ -26,7 +26,6 @@ print("- ctrl:", data.ctrl[:])
 
 # simulate
 mujoco.mj_step(model, data)
-mujoco.mj_rnePostConstraint(model, data)
 
 print("\nAfter 1 simulation step:")
 print("- mocap pos:", data.mocap_pos[MOCAP_ID][:])
