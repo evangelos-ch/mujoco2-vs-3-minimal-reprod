@@ -1,6 +1,8 @@
 import mujoco
 import numpy as np
 
+np.set_printoptions(suppress=True)
+
 model = mujoco.MjModel.from_xml_path("./model.xml")
 data = mujoco.MjData(model)
 mujoco.mj_resetData(model, data)
