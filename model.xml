@@ -1,6 +1,6 @@
 <mujoco>
     <option timestep='0.0025' iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="elliptic"/>
-    <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="4 5" fitaabb="true"/>
+    <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="4 5"/>
 
     <asset>
         <texture type="skybox" builtin="gradient" rgb1=".50 .495 .48" rgb2=".50 .495 .48" width="32" height="32"/>
@@ -10,11 +10,7 @@
     <default>
       <default class="xyz_base">
           <joint armature="0.001" damping="2" limited="true"/>
-          <geom conaffinity="0" contype="0" group="1" type="mesh"/>
           <position ctrllimited="true" ctrlrange="0 1.57"/>
-          <default class="base_viz">
-              <geom conaffinity="0" condim="4" contype="0" group="1"  solimp=".8 .9 .01" solref=".02 1" type="mesh"/>
-          </default>
           <default class="base_col">
               <geom conaffinity="1" condim="4" contype="1" group="4"  material="xyz_col" solimp=".8 .9 .01" solref=".02 1"/>
           </default>
