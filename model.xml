@@ -3,6 +3,7 @@
     <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="4 5"/>
 
     <keyframe>
+        <key name="issue_0" mpos="0 0.6 0.2" mquat="1 0 1 0"/>
         <key name="issue_1" mpos="0 0.6 0.2" mquat="1 0 1 0" time="0.125"/>
     </keyframe>
 
