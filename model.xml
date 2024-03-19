@@ -2,6 +2,10 @@
     <option timestep='0.0025' iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="elliptic"/>
     <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="4 5"/>
 
+    <keyframe>
+        <key name="issue_1" mpos="0 0.6 0.2" mquat="1 0 1 0" time="0.0025"/>
+    </keyframe>
+
     <asset>
         <texture type="skybox" builtin="gradient" rgb1=".50 .495 .48" rgb2=".50 .495 .48" width="32" height="32"/>
         <material name="xyz_col" rgba="0.3 0.3 1.0 0.5" shininess="0" specular="0.5"/>
